@@ -4,8 +4,8 @@ const conversionUtils = require("../utils/conversionUtils");
 // Function to retrieve current weather for a location
 async function getCurrentWeather(location) {
   const apiKey = process.env.OPENWEATHERMAP_API_KEY;
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}&units=metric
-  `;
+  const unit = "metric";
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}&units=${unit}`;
 
   try {
     const response = await axios.get(url);
