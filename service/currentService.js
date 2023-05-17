@@ -2,10 +2,18 @@ const axios = require("axios");
 const conversionUtils = require("../utils/conversionUtils");
 
 // Function to retrieve current weather for a location
-async function getCurrentWeather(location) {
+async function getCurrentWeather(location, unit) {
   const apiKey = process.env.OPENWEATHERMAP_API_KEY;
-  const unit = "metric";
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}&units=${unit}`;
+  let option = "";
+  if (unit.toLowerCase() === "celcius") {
+    option = "metric";
+  } else if (unit.toLowerCase() === "fahrenheit") {
+    option = "imperial";
+  } else {
+    res.status(403).json({ error: "Enter a valid Location" });
+  }
+
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}&units=${option}`;
 
   try {
     const response = await axios.get(url);
@@ -13,12 +21,7 @@ async function getCurrentWeather(location) {
 
     // Extract relevant information from currentWeatherData
     const currentWeather = {
-      temperature: {
-        celsius: currentWeatherData.main.temp,
-        fahrenheit: conversionUtils.convertToFahrenheit(
-          currentWeatherData.main.temp
-        ),
-      },
+      temperature: currentWeatherData.main.temp,
       humidity: currentWeatherData.main.humidity,
       windSpeed: currentWeatherData.wind.speed,
       weatherConditions: currentWeatherData.weather[0].description,
