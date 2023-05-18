@@ -1,5 +1,4 @@
 const axios = require("axios");
-const conversionUtils = require("../utils/conversionUtils");
 
 // Function to retrieve weather forecast for a location
 async function getWeatherForecast(location, unit) {
@@ -10,7 +9,7 @@ async function getWeatherForecast(location, unit) {
   } else if (unit.toLowerCase() === "fahrenheit") {
     option = "imperial";
   } else {
-    res.status(403).json({ error: "Enter a valid Location" });
+    throw { cod: '400', message: 'Enter a valid temperature unit' };
   }
 
   const url = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&appid=${apiKey}&units=${option}`;
@@ -29,9 +28,8 @@ async function getWeatherForecast(location, unit) {
     }));
 
     return forecast;
-  } catch (error) {
-    console.error(error);
-    throw new Error("Failed to fetch weather forecast data");
+  } catch (err) {
+    throw err.response.data;
   }
 }
 
