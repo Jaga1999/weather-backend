@@ -27,34 +27,3 @@ Open [http://localhost:5000](http://localhost:3000) to view it in Postman or any
 ## Usage Instructions
 
 Open the project folder, You will find all the code used and you can edit your information accordingly.
-
-
-# API Documentation
-
-## Current Weather
-
-To get the current weather the route is 
-
-```
-localhost:5000/weather/current?location={location}&unit={unit}
-```
-
-This route will get you the current weather for the day you are requesting.
-
-The location you specify by replacing `{location}`.
-
-if you want the temperature to be celcius or fahrenheit then specify by replacing `unit`.
-
-## Weather Forecast
-
-To get the forecast weather the route is 
-
-```
-localhost:5000/weather/forecast?location={location}&unit={unit}
-```
-
-This route will get you the forecast weather data for every 3 hours for next 5 days.
-
-The location you specify by replacing `{location}`.
-
-if you want the temperature to be celcius or fahrenheit then specify by replacing `unit`.
