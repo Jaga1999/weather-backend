@@ -22,7 +22,7 @@ Clone down this repository. You will need `node.js` and `git` installed globally
 4. If you want to run this project in development mode, you can run `npm run dev`
 
 Runs the app in the development mode.\
-Open [http://localhost:5000](http://localhost:3000) to view it in Postman or any of your api testing software.
+Open [http://localhost:5000](http://localhost:5000) to view it in Postman or any of your api testing software.
 
 ## Usage Instructions
 
