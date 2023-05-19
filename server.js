@@ -2,6 +2,7 @@ const express = require("express");
 const weatherRoutes = require("./routes/weatherRoutes");
 const dotenv = require("dotenv").config();
 const rateLimit = require('express-rate-limit');
+const cors = require("cors");
 
 const app = express();
 const port = process.env.PORT || 5001;
@@ -11,6 +12,7 @@ const apiLimiter = rateLimit({
   message: 'Too many requests from this IP, please try again later.',
 });
 
+app.use(cors);
 
 // Routes
 app.use("/weather", apiLimiter,weatherRoutes);
